@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>useEffect was not very effective | 404answernotfound</title>
+
+	<link rel="stylesheet" href="dist/reset.css" />
+	<link rel="stylesheet" href="dist/reveal.css" />
+	<link rel="stylesheet" href="dist/theme/black.css" />
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<style>
+		.highlight-yellow {
+			border-radius: 1em 0 1em 0;
+			background-image: linear-gradient(-100deg,
+					rgba(255, 224, 0, 0.2),
+					rgba(255, 224, 0, 0.7) 95%,
+					rgba(255, 224, 0, 0.1));
+		}
+
+		strong {
+			position: relative;
+		}
+
+		strong::before {
+			/* Highlight color */
+			background-color: #0f4c75;
+			content: "";
+			position: absolute;
+			width: calc(100% + 4px);
+			height: 40%;
+			left: -2px;
+			bottom: 30%;
+			z-index: -1;
+			transform: rotate(-2deg);
+		}
+
+		.container {
+			display: flex;
+		}
+
+		.col {
+			flex: 1;
+		}
+
+		.twocolumn {
+			display: grid !important;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 10px;
+			text-align: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="./img/starter.png">
+			</section>
+			<section data-background-color="#1B262C">
+				<h1>Hey there!</h1>
+			</section>
+			<section data-background-color="#1B262C" data-markdown>
+				<textarea data-template>
+						```js [4-6|8]
+						// whoami.component.js
+						import { useState } from 'react'
+
+						const [name] = useState('Lorenzo Pieri')
+						const [age, setAge] = useState(32)
+						const [job, setJob] = useState('Currently @ AVR Tech')
+
+						console.log('Hi everyone! 👋')
+						```
+					  </textarea>
+			</section>
+			<section data-background-color="#1B262C" data-markdown>
+				<textarea data-template>
+						```js [3-5]
+						// talk.component.js
+						import { useEffect } from 'react'
+
+						const title = 'useEffect was not very effective!'
+
+						console.log(`Let's talk about ${title}`)
+						```
+					  </textarea>
+			</section>
+			<section data-background-color="#1B262C">
+				<img data-src="img/fetch1.jpeg" />
+			</section>
+			<section data-background-color="#1B262C">
+				<img data-src="img/fetch2.jpeg" />
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>Now,</h2>
+				<img data-src="img/question.gif" />
+			</section>
+			<section data-background-video="img/catvid.mp4" data-background-video-loop data-background-video-muted
+				data-background-size="contain" data-background-color="#1B262C">
+				<p style="padding: 1em; background-color: #1b262c; color: #d4ecdd">
+					Are you a React dev? 🙌
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>Are you doing it properly?</p>
+				<img data-src="img/programmer1.gif" />
+			</section>
+			<section data-background-color="#1B262C">
+				<p>Do you know React? 🤔</p>
+			</section>
+			<section data-background-video="img/shiba.mp4" data-background-video-loop data-background-video-muted
+				data-background-size="cover" data-background-color="#1B262C">
+				<p style="padding: 1em; background-color: #1b262c; color: #d4ecdd">
+					** wow, big scare, such doubts **
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					Don't worry! React is still React and you <i>probably</i> used it
+					well already
+				</p>
+				<p>But, if you NEVER used React before</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>React is</h2>
+				<span class="fragment">A JavaScript library for
+					<strong>building user interfaces</strong></span>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>With <strong>React</strong> you can</h2>
+				<p class="fragment">👨‍💻 build dynamic web apps</p>
+				<p class="fragment">⚒️ develop reusable components</p>
+				<p class="fragment">
+					💪 brag about the fact that you don't use Angular
+				</p>
+				<p class="fragment">🔥 use the latest javascript features</p>
+				<p class="fragment">and many other things...</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>But most <strong>importantly</strong></h2>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>You will either love or love</h2>
+				<h2><strong>react hooks</strong></h2>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>But what's a hook, really?</h2>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>
+					<strong>Hooks</strong> are functions that let you hook into React
+					state and lifecycle features
+				</h2>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>What before was done with classes</p>
+				<pre><code data-trim data-noescape><script type="text/template">
+			class Talk extends React.Component {
+				constructor(props) {}
+				
+				componentDidMount() {}
+				componentWillUnmount() {}
+				
+				render() {
+					return <h1>Hello, world!</h1>
+				}
+			}
+			</script></code></pre>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>Now we can do functional!</p>
+				<pre><code data-trim data-noescape><script type="text/template">
+					import { useState } from 'react'
+
+					function Talk() {
+						const [speaker, setSpeaker] = useState('not yet defined')
+
+						return (
+							<>
+								<p>The speaker today is {speaker}</p>
+								<button onClick={() => setSpeaker('Lorenzo')}>
+									Click here
+								</button>
+							</>
+						)
+					}
+
+					export Talk
+					</script></code></pre>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>And manage our state with <strong>hooks</strong></p>
+				<pre><code data-trim data-noescape data-line-numbers="1,4"><script type="text/template">
+					  import { useState } from 'react'
+  
+					  function Talk() {
+						  const [speaker, setSpeaker] = useState('not yet defined')
+  
+						  return (
+							  <>
+								  <p>The speaker today is {speaker}</p>
+								  <button onClick={() => setSpeaker('Lorenzo')}>
+									  Click here
+								  </button>
+							  </>
+						  )
+					  }
+  
+					  export Talk
+					  </script></code></pre>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Hooks like <strong>useState</strong> trigger a rerender of the
+					component every time the <strong>state</strong> changes
+				</p>
+				<pre>
+			  <code data-trim data-noescape data-line-numbers="1,4,8">
+				  <script type="text/template">
+			  import { useState } from 'react'
+  
+			  function Talk() {
+				  const [speaker, setSpeaker] = useState('not yet defined')
+  
+				  return (
+					  <>
+						  <p>The speaker today is {speaker}</p>
+						  <button onClick={() => setSpeaker('Lorenzo')}>
+							  Click here
+						  </button>
+					  </>
+				  )
+			  }
+			  </script>
+		  </code>
+	  </pre>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					To do this, <strong>React</strong> uses something called <strong>virtual DOM</strong> along with a
+					diffing algorithm that serves for what is the main mechanism of sync between UI and states
+				</p>
+			</section>
+
+
+			<section data-background-color="#1B262C">
+				<h2>Reconciliation</h2>
+				<img data-src="img/magic1.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					There are quite a few hooks that we can use to play around with React and build our apps
+				</p>
+				<ul>
+					<li>useState, to manage our state and renders</li>
+					<li>useEffect, to take care of <strong>side-effects</strong></li>
+					<li>useRef, to play with the real DOM</li>
+				</ul>
+				<p>and many more...</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					and yes, hooks are functions and a function is a hook if it starts with the word
+					<strong>use</strong>
+				</p>
+			</section>
+
+
+			<section data-background-color="#1B262C">
+				<p>
+					we can also make <strong>our own hooks</strong>, and the same rules apply:
+					<p>- must begin with use</p>
+					<p>- must use at least one react hook</p>
+				</p>
+			</section>
+
+
+			<section data-background-color="#1B262C">
+				<p>
+					Now that we are React professionals
+
+				</p>
+				<img data-src="img/kungfu.gif" />
+
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Let's dive right into <strong>useEffect</strong>
+				</p>
+				<img data-src="img/useeffect1.gif" />
+			</section>
+			<!-- 
+			<section data-background-color="#1B262C">
+				<p>
+					<strong>useEffect</strong> has:
+				</p>
+				<p>- a function body where the side effects can be managed by the developer</p>			<p>- a returning function to <strong>clean up</strong> the side-effects if necessary</p>
+				<p>- a dependency array to instruct the useEffect hook on when to run a rerender</p>
+			</section> -->
+
+			<section data-background-color="#1B262C">
+				<p>
+					<strong>useEffect</strong> has:
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers="1,5-13">
+						<script type="text/template">
+							import { useEffect } from 'react'
+				
+							function Talk() {
+								
+								useEffect(() => {
+
+									/**
+									your side effects managed by useEffect
+									*/
+
+									return () => ... // cleanup function
+
+								}, []) /** dependency array */ 
+				
+								return <p>Hello Fullstack Florence!</p>
+							}
+						</script>
+					</code>
+				</pre>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					A badly configured <strong>useEffect</strong> can lead to weird things
+				</p>
+				<div class="twocolumn">
+					<div>
+						<pre>
+							<code data-trim data-noescape data-line-numbers="4-6">
+								<script type="text/template">
+									import { useEffect } from 'react'
+						
+									function Talk() {
+										useEffect(() => {
+											// omitted for brevity
+										}) /** no dependency array */ 
+						
+										return <p>Hello Fullstack Florence!</p>
+									}
+								</script>
+							</code>
+						</pre>
+					</div>
+					<div>
+						<img data-src="img/deparray.gif" />
+					</div>
+				</div>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Our minds are still a little bit intertwined with the previous <strong>class way</strong> of dealing
+					with state and <strong>life cycle</strong> of the components
+				</p>
+				<div>
+					<pre>
+							<code data-trim data-noescape>
+								<script type="text/template">
+									import { useEffect } from 'react'
+						
+									function Talk() {
+										useEffect(() => {
+											// ...omitted for brevity
+											return () => ... // componentWillUnmount
+										}, []) /** empty array -> componentDidMount */ 
+						
+										return <p>Hello Fullstack Florence!</p>
+									}
+								</script>
+							</code>
+						</pre>
+				</div>
+
+			</section>
+
+
+			<section data-background-color="#1B262C">
+				<p>
+					That we forget the most important lesson about Hooks.
+					<br>
+					<strong>Hooks</strong> are not <strong>classes</strong>
+				</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					So what should we do? We should rewire our thinking in React.
+				</p>
+				<img data-src="img/forget.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Unlearn, you must.
+				</p>
+				<img data-src="img/yoda.webp" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Classes come with <strong>life cycles</strong> and <strong>state</strong>
+				</p>
+				<ul>
+					<li>componentDidMount</li>
+					<li>componentWillUnmount</li>
+					<li>componentDidUpdate</li>
+				</ul>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Functional Components are kind of <strong>stateless</strong>
+				</p>
+				<p>but they can become stateful thanks to <strong>hooks</strong></p>
+				<p>and hooks are probably easier to read and write than classes are</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Now, hold on, where's the catch?!
+				</p>
+				<img data-src="img/catch1.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					No catch, just <strong>some rules</strong>
+				</p>
+				<img data-src="img/rules.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<ol>
+					<li>only call hooks <strong>outside</strong> of
+						<ul>
+							<li>loops</li>
+							<li>conditions</li>
+							<li>nested functions</li>
+						</ul>
+					</li>
+					<li>only call hooks <strong>inside</strong>
+						<ul>
+							<li>functional components</li>
+							<li>custom hooks</li>
+						</ul>
+					</li>
+				</ol>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<div>
+					<pre>
+							<code data-trim data-noescape>
+								<script type="text/template">
+									function Stack({ isReact }) {
+
+										// 🚫 Don't do this
+										if(isReact){
+											useEffect(() => {
+												// do something
+											}, [])
+										}
+
+										// ✅ Do this
+										useEffect(() => {
+											if(isReact){
+												// do something
+											}
+										}, [])
+						
+										return <p>Hello Fullstack Florence!</p>
+									}
+								</script>
+							</code>
+						</pre>
+				</div>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p><strong>Rules</strong> for hooks are of the uttermost importance</p>
+				<p>Breaking out of React will only result in unexpected behavior from your app</p>
+				<p>You can install <strong>ESLint</strong> to make sure you don't go against them</p>
+			</section>
+
+
+			<section data-background-color="#1B262C">
+				<h2>that's it</h2>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					So, <strong>let's finally start</strong>
+				</p>
+				<img data-src="img/letsdoit.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					<strong>React 18</strong> is out a few months now and everyone is having problems with it
+				</p>
+				<img data-src="img/likewhy.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h3>The new release brought</h3>
+				<ol>
+					<li><strong>Concurrent rendering</strong>, which is a technicality</li>
+					<li><strong>Automatic Batching</strong>, which is a technicality</li>
+					<li><strong>Suspense</strong>, which is not yet production ready</li>
+					<li>Changes to the way you create the root node for React</li>
+					<li>New hooks</li>
+					<li>An updated strict mode</li>
+				</ol>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h3>Let's focus on the updated <br><strong>strict mode</strong></h3>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Strict Mode in React comes out of the box if you start your app with a CLI utility like
+					<strong>CRA</strong> or <strong>Vite</strong></p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>What people tend to forget is the fact that <strong>Strict Mode</strong> can be opted-out at any time
+					and is <strong>development only</strong></p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>You don't have it in your production app <strong>after build</strong></p>
+				<img data-src="img/confused1.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>So why is everyone crying about it?</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Because useEffect now double renders the component. Better yet, useEffect <strong>mounts</strong>,
+					<strong>unmounts</strong> and <strong>remounts</strong> the component</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>It does so on every component mount</p>
+				<img data-src="img/doubt2.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>It's not a bug<br>it's <strong>intentional</strong></p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>The application is actually <strong>helping you</strong> find weird component bugs before they get
+					into production, which is actually a good thing</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>If your component behaves in unexpected ways</p>
+				<p><strong>only because</strong> of this second rerender</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h2>❌ ATTENTION ❌</h2>
+				<img data-src="img/redflag.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>We should stop thinking about Functional components as if they were class components</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>We shouldn't be asking</p>
+				<p>"how can I run this only once?"</p>
+				<p>instead</p>
+				<p><strong>"why is it not working properly on remount?"</strong></p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<pre>
+					<code data-trim data-noescape>
+						<script type="text/template">
+							function Stack({ isReact }) {
+
+								// 🚫 This is not componentDidMount
+								if(isReact){
+									useEffect(() => {
+										// do something
+									}, [])
+								}
+				
+								return <p>Hello Fullstack Florence!</p>
+							}
+						</script>
+					</code>
+				</pre>
+			</section>
+
+			<section data-background-iframe="https://codesandbox.io/s/keen-yonath-4myubj?file=/src/App.js"
+				data-background-interactive>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>If codesandbox.io doesn't work</p>
+				<pre>
+					<code data-trim data-noescape>
+						<script type="text/template">
+							import { useState, useEffect } from "react";
+
+							export default function App() {
+							return (
+								<div className="App">
+								<Talk />
+								<DoubleRenderThis />
+								</div>
+							);
+							}
+
+							function Talk() {
+							const [speaker, setSpeaker] = useState("not yet defined");
+
+							return (
+								<>
+								<p>The speaker today is {speaker}</p>
+								<button onClick={() => setSpeaker("Lorenzo")}>Click here</button>
+								</>
+							);
+							}
+
+							function DoubleRenderThis() {
+							useEffect(() => {
+								console.log("mounted");
+								return () => {
+								console.log("unmounted");
+								};
+							});
+							return <h1>Hello, FullStack Florence!</h1>;
+							}
+
+						</script>
+					</code>
+				</pre>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Let's remember</p>
+				<ul>
+					<li>double rendering happens only in development</li>
+					<li>double rendering happens only in strict mode</li>
+					<li>double rendering <strong>is my friend</strong></li>
+				</ul>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<img data-src="img/reacttwitter.jpeg" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>You get the point</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>And yet, you want to stop React from doing that in Development, for no particular reason</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>There are solutions</p>
+				<img data-src="img/anakin1.jpeg" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Solution 1, <strong>useRef</strong></p>
+				<pre>
+					<code data-trim data-noescape>
+						<script type="text/template">
+							function RenderThisOnce() {
+								const isUnmountedRef = useRef(false);
+							  
+								useEffect(() => {
+							  
+								  if (isUnmountedRef.current) {
+									console.log("mounted only once");
+								  }
+							  
+								  isUnmountedRef.current = true;
+							  
+								  return () => {
+									console.log("unmounted only once");
+								  };
+								}, [isUnmountedRef]);
+							  
+								return <h1>Hello, FullStack Florence!</h1>;
+							  }
+						</script>
+					</code>
+				</pre>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Solution 2, <strong>delete StrictMode</strong></p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers="2-9,11,13">
+						<script type="text/template">
+							import { StrictMode } from "react";
+							import { createRoot } from "react-dom/client";
+
+							import App from "./App";
+
+							const rootElement = document.getElementById("root");
+							const root = createRoot(rootElement);
+
+							root.render(
+								<StrictMode>
+									<App />
+								</StrictMode>
+							);
+
+						</script>
+					</code>
+				</pre>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<pre>
+					<code data-trim data-noescape data-line-numbers>
+						<script type="text/template">
+							import { createRoot } from "react-dom/client";
+
+							import App from "./App";
+
+							const rootElement = document.getElementById("root");
+							const root = createRoot(rootElement);
+
+							root.render(
+								<App />
+							);
+						</script>
+					</code>
+				</pre>
+			</section>
+
+			<section data-background-iframe="https://codesandbox.io/s/keen-yonath-4myubj?file=/src/App.js"
+				data-background-interactive>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>The solutions proposed are just escape hatches</p>
+				<img data-src="img/dogescape.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>So let's go back a bit and ask ourselves, again</p>
+				<p>Why are we escaping this helping mechanism?</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>"But I don't want to <strong>fetch twice</strong>!"</p>
+				<p>Fair enough. Why are you doing it in useEffect than?</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>"That's where it's <strong>supposed</strong> to be done!"</p>
+				<p>Also good point. Why are you building your own fetch calls tho?</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p><strong>Wake up!</strong></p>
+				<img data-src="img/wakeup.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p><strong>React</strong> is mainly a UI library</p>
+				<p>Want to fetch inside useEffect, only on mount, only once?</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Build your own caching mechanism</p>
+				<p>Build your own stale-while-revalidate technique</p>
+				<p>Build your own error handling and loading</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>That's a lot of stuff to build, so why would you?</p>
+				<h2>We already invented the wheel, <strong>just use it</strong></h2>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>🌸 <a href="https://react-query.tanstack.com/">React Query</a></p>
+				<p>〰️ <a href="https://github.com/vercel/swr">React SWR</a></p>
+				<p>⚛️ <a href="https://redux-toolkit.js.org/tutorials/rtk-query">RTK Query</a></p>
+
+				<p>This solutions come with what you need out of the box, no need to reinvent anything and they are
+					production ready and open source</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Will this stop the double rendering with useEffect?</p>
+				<p><strong>No, it will not</strong>, but, you don't need that</p>
+				<p>HTTP requests will be cached and canceled by those solutions, hence you will have no problems with
+					rerendering components</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p><strong>fun fact</strong></p>
+				<p>page changes by users trigger the same mechanism so you are actually virtualizing real world usages
+					with StrictMode</p>
+				<img data-src="img/wow2.gif" />
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p><strong>and yet</strong>, you want to build your own fetching mechanism</p>
+				<img data-src="img/calm1.gif" />
+			</section>
+
+			<section data-background-iframe="https://codesandbox.io/s/keen-yonath-4myubj?file=/src/App.js"
+				data-background-interactive>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<pre>
+					<code data-trim data-noescape data-line-numbers>
+						<script type="text/template">
+							import { useState, useEffect } from "react"
+							import axios from "axios"
+
+							function useFetch(url) {
+								const [data, setData] = useState(null)
+								const [loading, setLoading] = useState(null)
+								const [error, setError] = useState(null)
+
+								useEffect(() => {
+									setLoading("loading...")
+									setData(null)
+									setError(null)
+									const source = axios.CancelToken.source()
+									axios
+										.get(url, { cancelToken: source.token })
+										.then((res) => {
+											setLoading(false)
+											//checking for multiple responses for more flexibility
+											//with the url we send in.
+											res.data.content && setData(res.data.content)
+											res.content && setData(res.content)
+										})
+										.catch((err) => {
+											setLoading(false)
+											setError("An error occurred. Awkward..")
+										});
+									return () => {
+										source.cancel()
+									};
+								}, [url]);
+
+								return { data, loading, error }
+							}
+
+							export default useFetch
+						</script>
+					</code>
+				</pre>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>There it is, a bad copy of React Query</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p><strong>just use react-query</strong></p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Nice resources to check out online!</p>
+				<p>
+					🔗 <a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch">Fetch API and
+						AbortController</a></p>
+				<p>
+					🔗 <a href="https://overreacted.io/a-complete-guide-to-useeffect">A complete guide to useEffect</a>
+				</p>
+				<p>
+					🔗 <a href="https://dev.to/techcheck/custom-react-hook-usefetch-eid">React custom useFetch
+						implementation</a></p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>Nice resources to check out online! part 2</p>
+				<p>
+					🔗 <a href="https://www.robinwieruch.de/react-hooks-fetch-data/">How to fetch data with React
+						Hooks</a></p>
+				<p>
+					🔗 <a
+						href="https://404answernotfound.eu/blog/react-useeffect-double-rendering-fix-and-why-you-should-stop-crying-about-it">React
+						useEffect double rendering fix and why you should stop crying about it</a>
+				</p>
+				<p>
+					🔗 <a href="https://404answernotfound.eu/blog/react-18-is-out-whats-good-about-it">React 18 is out!
+						What's good about it?
+					</a></p>
+			</section>
+
+			<section data-background-color="#1B262C" data-markdown>
+				<textarea data-template>
+						```js [4|5|6|7|11]
+						// final.component.js
+						import { useState } from 'react'
+
+						const [slides] = useState('https://404answernotfound.eu/useeffect-was-not-very-effective')
+						const [blog] = useState('https://404answernotfound.eu/')
+						const [twitter] = useState('@404answnotfound')
+						const [github] = useState('404answernotfound')
+
+
+
+						console.log('Thank you Fullstack Florence! 👋')
+						```
+					  </textarea>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h3>Looking for a bunch of cool people in tech? Join us @ SH</h3>
+				<div class="twocolumns">
+					<img style="border-radius: 50%" height="200px" data-src="img/sh.png" />
+					<img height="200px" data-src="img/qrcodesh.png" />
+				</div>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h1>Thank you everyone!</h1>
+				<img height="200px" data-src="img/lorenzo.png" />
+				<p>
+					🔗 <a href="https://404answernotfound.eu/">404answernotfound Blog</a></p>
+			</section>
+
+		</div>
+	</div>
+	<footer
+		style="position: absolute; bottom: 2vh; left: 2vw; color: #d4ecdd; font-size: 1em; font-family: Source Sans Pro, Helvetica, sans-serif;">
+		<div style="display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		align-content: center;">
+			<img height="40px" src="img/lorenzo.png" />
+			<span style="padding-left: 1em">@404answernotfound</span>
+		</div>
+	</footer>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		});
+	</script>
+</body>
+
+</html>
