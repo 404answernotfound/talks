@@ -599,12 +599,10 @@
 							function Stack({ isReact }) {
 
 								// 🚫 This is not componentDidMount
-								if(isReact){
-									useEffect(() => {
-										// do something
-									}, [])
-								}
-				
+								useEffect(() => {
+									// do something
+								}, [])
+
 								return <p>Hello Fullstack Florence!</p>
 							}
 						</script>
