@@ -61,9 +61,6 @@
 		<div class="slides">
 			<section data-background-image="./img/starter.png">
 			</section>
-			<section data-background-color="#1B262C">
-				<h1>Hey there!</h1>
-			</section>
 			<section data-background-color="#1B262C" data-markdown>
 				<textarea data-template>
 						```js [4-6|8]
@@ -91,10 +88,11 @@
 					  </textarea>
 			</section>
 			<section data-background-color="#1B262C">
-				<img data-src="img/fetch1.jpeg" />
-			</section>
-			<section data-background-color="#1B262C">
-				<img data-src="img/fetch2.jpeg" />
+				<div class="twocolumn">
+					<img data-src="img/fetch1.jpeg" />
+					<img data-src="img/fetch2.jpeg" />
+
+				</div>
 			</section>
 			<section data-background-color="#1B262C">
 				<h2>Now,</h2>
@@ -299,25 +297,19 @@
 				</p>
 				<img data-src="img/useeffect1.gif" />
 			</section>
-			<!-- 
-			<section data-background-color="#1B262C">
-				<p>
-					<strong>useEffect</strong> has:
-				</p>
-				<p>- a function body where the side effects can be managed by the developer</p>			<p>- a returning function to <strong>clean up</strong> the side-effects if necessary</p>
-				<p>- a dependency array to instruct the useEffect hook on when to run a rerender</p>
-			</section> -->
 
 			<section data-background-color="#1B262C">
 				<p>
 					<strong>useEffect</strong> has:
 				</p>
 				<pre>
-					<code data-trim data-noescape data-line-numbers="1,5-13">
+					<code data-trim data-noescape>
 						<script type="text/template">
 							import { useEffect } from 'react'
 				
 							function Talk() {
+								// top level of the component
+								// gets rendered and calculated first
 								
 								useEffect(() => {
 
@@ -389,12 +381,48 @@
 
 			</section>
 
+			<section data-background-color="#1B262C">
+				<p>
+					We have to remember that useEffect is for keeping in sync the UI with some external
+					state that cannot be controlled directly by React's first rendering
+				</p>
+			</section>
 
 			<section data-background-color="#1B262C">
 				<p>
-					That we forget the most important lesson about Hooks.
-					<br>
-					<strong>Hooks</strong> are not <strong>classes</strong>
+					useEffect <strong>runs only after render</strong>
+				</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<div>
+					<pre>
+						<code data-trim data-noescape>
+							<script type="text/template">
+								// taken from React Beta documentation
+								function VideoPlayer({ src, isPlaying }) {
+									const ref = useRef(null)
+
+									useEffect(() => {
+										if (isPlaying) {
+											ref.current.play()
+										} else {
+											ref.current.pause()
+										}
+									})
+
+									return <video ref={ref} src={src} loop playsInline />
+								}
+							</script>
+						</code>
+					</pre>
+				</div>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					The ref.current property would result to be undefined outside of a useEffect
+					because the DOM node has yet to be mounted
 				</p>
 			</section>
 
@@ -429,20 +457,6 @@
 				</p>
 				<p>but they can become stateful thanks to <strong>hooks</strong></p>
 				<p>and hooks are probably easier to read and write than classes are</p>
-			</section>
-
-			<section data-background-color="#1B262C">
-				<p>
-					Now, hold on, where's the catch?!
-				</p>
-				<img data-src="img/catch1.gif" />
-			</section>
-
-			<section data-background-color="#1B262C">
-				<p>
-					No catch, just <strong>some rules</strong>
-				</p>
-				<img data-src="img/rules.gif" />
 			</section>
 
 			<section data-background-color="#1B262C">
@@ -614,7 +628,7 @@
 				data-background-interactive>
 			</section>
 
-			<section data-background-color="#1B262C">
+			<!-- <section data-background-color="#1B262C">
 				<p>If codesandbox.io doesn't work</p>
 				<pre>
 					<code data-trim data-noescape>
@@ -654,7 +668,7 @@
 						</script>
 					</code>
 				</pre>
-			</section>
+			</section> -->
 
 			<section data-background-color="#1B262C">
 				<p>Let's remember</p>
@@ -663,14 +677,6 @@
 					<li>double rendering happens only in strict mode</li>
 					<li>double rendering <strong>is my friend</strong></li>
 				</ul>
-			</section>
-
-			<section data-background-color="#1B262C">
-				<img data-src="img/reacttwitter.jpeg" />
-			</section>
-
-			<section data-background-color="#1B262C">
-				<p>You get the point</p>
 			</section>
 
 			<section data-background-color="#1B262C">
@@ -734,25 +740,6 @@
 				</pre>
 			</section>
 
-			<section data-background-color="#1B262C">
-				<pre>
-					<code data-trim data-noescape data-line-numbers>
-						<script type="text/template">
-							import { createRoot } from "react-dom/client";
-
-							import App from "./App";
-
-							const rootElement = document.getElementById("root");
-							const root = createRoot(rootElement);
-
-							root.render(
-								<App />
-							);
-						</script>
-					</code>
-				</pre>
-			</section>
-
 			<section data-background-iframe="https://codesandbox.io/s/keen-yonath-4myubj?file=/src/App.js"
 				data-background-interactive>
 			</section>
@@ -778,19 +765,14 @@
 			</section>
 
 			<section data-background-color="#1B262C">
-				<p><strong>Wake up!</strong></p>
-				<img data-src="img/wakeup.gif" />
-			</section>
-
-			<section data-background-color="#1B262C">
 				<p><strong>React</strong> is mainly a UI library</p>
 				<p>Want to fetch inside useEffect, only on mount, only once?</p>
 			</section>
 
 			<section data-background-color="#1B262C">
 				<p>Build your own caching mechanism</p>
-				<p>Build your own stale-while-revalidate technique</p>
 				<p>Build your own error handling and loading</p>
+				<p>Build your own cancelling signal (AbortController)</p>
 			</section>
 
 			<section data-background-color="#1B262C">
@@ -828,50 +810,6 @@
 
 			<section data-background-iframe="https://codesandbox.io/s/keen-yonath-4myubj?file=/src/App.js"
 				data-background-interactive>
-			</section>
-
-			<section data-background-color="#1B262C">
-				<pre>
-					<code data-trim data-noescape data-line-numbers>
-						<script type="text/template">
-							import { useState, useEffect } from "react"
-							import axios from "axios"
-
-							function useFetch(url) {
-								const [data, setData] = useState(null)
-								const [loading, setLoading] = useState(null)
-								const [error, setError] = useState(null)
-
-								useEffect(() => {
-									setLoading("loading...")
-									setData(null)
-									setError(null)
-									const source = axios.CancelToken.source()
-									axios
-										.get(url, { cancelToken: source.token })
-										.then((res) => {
-											setLoading(false)
-											//checking for multiple responses for more flexibility
-											//with the url we send in.
-											res.data.content && setData(res.data.content)
-											res.content && setData(res.content)
-										})
-										.catch((err) => {
-											setLoading(false)
-											setError("An error occurred. Awkward..")
-										});
-									return () => {
-										source.cancel()
-									};
-								}, [url]);
-
-								return { data, loading, error }
-							}
-
-							export default useFetch
-						</script>
-					</code>
-				</pre>
 			</section>
 
 			<section data-background-color="#1B262C">
@@ -917,7 +855,7 @@
 						// final.component.js
 						import { useState } from 'react'
 
-						const [slides] = useState('https://404answernotfound.eu/useeffect-was-not-very-effective')
+						const [slides] = useState('https://404answernotfound.github.io/talks/useeffect-was-not-very-effective/slides/')
 						const [blog] = useState('https://404answernotfound.eu/')
 						const [twitter] = useState('@404answnotfound')
 						const [github] = useState('404answernotfound')
