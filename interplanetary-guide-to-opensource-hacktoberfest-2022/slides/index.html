@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>Interplanetary guide to Hacktoberfest 2022 | 404answernotfound</title>
+
+	<link rel="stylesheet" href="dist/reset.css" />
+	<link rel="stylesheet" href="dist/reveal.css" />
+	<link rel="stylesheet" href="dist/theme/black.css" />
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+		.reveal {
+			font-family: 'JetBrains Mono', monospace !important;
+		}
+		.reveal .slide-background {
+			background-image: url('img/bg.png');
+		}
+		.highlight-yellow {
+			border-radius: 1em 0 1em 0;
+			background-image: linear-gradient(-100deg,
+					rgba(255, 224, 0, 0.2),
+					rgba(255, 224, 0, 0.7) 95%,
+					rgba(255, 224, 0, 0.1));
+		}
+
+		strong {
+			position: relative;
+		}
+
+		strong::before {
+			/* Highlight color */
+			background-color: #9092ff;
+			color: #e5e1e6;
+			content: "";
+			position: absolute;
+			width: calc(100% + 4px);
+			height: 40%;
+			left: -2px;
+			bottom: 30%;
+			z-index: -1;
+			transform: rotate(-2deg);
+		}
+
+		.container {
+			display: flex;
+		}
+
+		.col {
+			flex: 1;
+		}
+
+		.twocolumn {
+			display: grid !important;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 10px;
+			text-align: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="./img/initial1.png">
+			</section>
+			<section data-background-image="./img/hb22.png">
+			</section>
+			<section data-background-color="#1B262C" data-markdown>
+				<textarea data-template>
+						```js [2-4|6]
+						// whoami.component.js
+						const name = 'Lorenzo Pieri'
+						const age = 33
+						const job = '👨‍💻 @ Antidote Technologies, Inc.'
+
+						console.log('Hi everyone! 👋')
+						```
+					  </textarea>
+			</section>
+			<!-- <section data-background-color="#1B262C">
+				<div class="twocolumn">
+					<img data-src="img/fetch1.jpeg" />
+					<img data-src="img/fetch2.jpeg" />
+				</div>
+			</section> -->
+			<section data-background-color="#1B262C">
+				<h2>Now,</h2>
+				<img data-src="img/question.gif" />
+			</section>
+			<section
+				data-background-size="contain" data-background-color="#1B262C">
+				<p style="padding: 1em; color: #d4ecdd">
+					How much do you know about Open Source? 🙌
+					<img data-src="img/isthatcode.gif" style="display: block; margin: 0 auto;" />
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					Open source is source code that is made freely available for possible modification and redistribution <br>
+					<p style="font-size: .8em; color: #9092ff">
+						(Taken from Wikipedia, also Open Source btw)
+					</p>
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					Open source software is made <br>
+					by <strong>the people</strong> for <strong>the people</strong>
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					Not all <strong>Open Source</strong> is really <strong>Open</strong>
+				</p>
+			</section>
+			<section data-background-video="img/shiba.mp4" data-background-video-loop data-background-video-muted
+				data-background-size="cover" data-background-color="#1B262C">
+				<p style="padding: 1em; background-color: #050505; color: #d4ecdd">
+					** wow, big scare, such doubts **
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					Not to worry. There is <strong>jargon</strong> to be known
+					about licensing, but that's the only boring part :)
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					So how does Open Source get 💩 done?
+				</p>
+			</section>
+				<section data-background-image="img/contribs.gif"
+				data-background-size="cover" data-background-color="#1B262C">
+				<p style="padding: 1em; background-color: rgba(5,5,5,0.6); color: #d4ecdd">
+					Open Source CONTRIBUTORS (and MAINTAINERS)
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					<strong>Contributors</strong> are at the heart of OS and each
+					Maintainer is also a Contributor!
+					<p style="font-size: .8em; color: #9092ff">
+						with a little bit more decisional power
+					</p>
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>
+					So, where do we do <strong>Open Source</strong>?
+				</p>
+				<p class="fragment"><img style="width: 50px; display: inline-block; vertical-align:middle" src="img/github.png" /> Github</p>
+				<p class="fragment"><img style="width: 50px; display: inline-block; vertical-align:middle" src="img/gitlab.png" /> Gitlab</p>
+				<p class="fragment">Other (like Bitbucket)</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2><strong>Open Source</strong> has great benefits!</h2>
+				<p class="fragment">👨‍💻 Agility mindset out of the box</p>
+				<p class="fragment">⚒️ Security can be top notch</p>
+				<p class="fragment">
+					💪 Beautiful movement of <strong>humans</strong>
+				</p>
+				<p class="fragment">🔥 Best talents</p>
+				<p class="fragment">and many other things...</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>But most <strong>importantly</strong></h2>
+			</section>
+			<section data-background-color="#1B262C">
+				<h2>It's 🌽, oops I mean Open!</h2>
+				<p style="font-size: .8em; color: #9092ff">
+					Repeat with me, this is not TikTok
+				</p>
+			</section>
+			<section data-background-color="#1B262C">
+				<p>Now, with the scary question</p>
+				<h2>Is all Open Source <br><strong>really</strong> Open?</h2>
+			</section>
+			<section data-background-image="img/questiontime.gif"
+			data-background-size="cover" data-background-color="#1B262C">
+			<p style="padding: 1em; background-color: rgba(5,5,5,0.8); color: #d4ecdd">
+				Well, not really. Not all Open Source is truly so. <br>
+				<span style="font-size: .8em; color: #9092ff;">
+					Remember, buzzwords sell.
+				</span>
+			</p>
+		</section>
+		<section data-background-color="#1B262C">
+			<p>If the CLI for a product is OS but the underlying implementation is not</p>
+			<h2>Can we really say that it's Open?</h2>
+		</section>
+		<section data-background-color="#1B262C">
+			<h2>Is Open Source just about <strong>licensing</strong>?</h2>
+			<span style="font-size: .8em; color: #9092ff;">
+				Spoiler alert: it's not.
+			</span>
+		</section>
+		<section data-background-image="img/dogeopinion.gif"
+		data-background-size="cover" data-background-color="#1B262C">
+		</section>
+		<section data-background-color="#1B262C">
+			<p>Quick question before we move on</p>
+			<h2>Do you think that all OS is free?</h2>
+			<span class="fragment" style="font-size: .8em; color: #9092ff;">
+				It's not. Open doesn't mean free. Not always, at least.
+			</span>
+		</section>
+
+
+		<section data-background-color="#1B262C">
+			<p>So how do we know if a software is Open Source?</p>
+			<h2 class="fragment">Let's talk about <br><strong>Licenses</strong></h2>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<p>
+				A license (in the OS world) is a piece of written information that states what can and can't be done
+				with that specific software.
+			</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<h2>There are things to be aware of</h2>
+			<p class="fragment" style="font-size: .7em;">- You will usually find a LICENSE.md file in repos</p>
+			<p class="fragment" style="font-size: .7em;">- Dependencies might have their own licences</p>
+			<p class="fragment" style="font-size: .7em;">- Not every license is written for easy readability</p>
+			<p class="fragment" style="font-size: .7em;">- License <strong>always</strong> go with the software</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<h2>Afraid of licenses? <br>No worries</h2>
+			<p class="fragment" style="font-size: .7em;">There are <strong>cool websites</strong> like <i>tldrlegal.com</i></p>
+			<p class="fragment" style="font-size: .7em;">Github is showcasing licensing in a fast readable format</p>
+			<p class="fragment" style="font-size: .7em;">And <strong>choosealicense.com</strong> if you need to apply one to your projects!</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<h2>Most known are:</h2>
+			<ul>
+				<li class="fragment" style="font-size: .7em;"><strong>MIT</strong>, the most permissive</li>
+				<li class="fragment" style="font-size: .7em;"><strong>WTFPL</strong> (Do What The Fuck You Want), you guess it</li>
+				<li class="fragment" style="font-size: .7em;"><strong>Apache 2.0</strong>, permissive and respectable</li>
+				<li class="fragment" style="font-size: .7em;"><strong>GPL</strong>, has fewer requirements</li>
+				<li class="fragment" style="font-size: .7em;"><strong>Creative Commons</strong>, attribution is a must</li>
+			</ul>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<p>
+				Let's not forget about the <br><strong>DRY</strong> principle. <br><br>
+				Open Source can help us keep up with best practices and avoid repetition
+				so that we can keep our codebase clean.
+			</p>
+		</section>
+
+
+
+
+
+
+		<section data-background-color="#1B262C">
+			<h2>Alright, time for <br><strong>stonks</strong>. <br><br> Can you make $$$ with Open Source?</h2>
+		</section>
+		<section data-background-color="#1B262C">
+			<p>One might think that open source software, even in its least permissive form, doesn't generate income.</p>
+			<p class="fragment"><strong>One would be so wrong to think so</strong>.</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<h2>A few examples</h2>
+			<ul>
+				<li class="fragment" style="font-size: .7em;"><strong>Redis</strong>, a key/value store</li>
+				<li class="fragment" style="font-size: .7em;"><strong>AppWrite</strong>, a complete suite of tools</li>
+				<li class="fragment" style="font-size: .7em;"><strong>PrismaDB</strong>, a cool DB</li>
+				<li class="fragment" style="font-size: .7em;"><strong>nginx or apache</strong>, amazing servers</li>
+				<li class="fragment" style="font-size: .7em;"><strong>Unix</strong></li>
+			</ul>
+		</section>
+
+		<section data-background-image="img/stonks.gif"
+		data-background-size="cover" data-background-color="#1B262C">
+		<p style="padding: 1em; background-color: rgba(5,5,5,0.8); color: #d4ecdd">
+			Open Source opens up a LOT of possibilities
+			<span style="font-size: .8em; color: #9092ff;">
+				<br>- Leonardo Da Vinci, somewhere in the 1500s
+			</span>
+		</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<p>Let's just remember that open means open. To anything. Attacks as well.</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<h2>A few examples</h2>
+			<ul>
+				<li class="fragment" style="font-size: .7em;"><strong>faker.js</strong>, a library that was defaced by its very author</li>
+				<li class="fragment" style="font-size: .7em;"><strong>log4j</strong>, an apache logging service vulnerability</li>
+				<li class="fragment" style="font-size: .7em;"><strong>Google dorking</strong>, so many configs and secrets are left in the wild of the internet</li>
+			</ul>
+		</section>
+
+
+		<section data-background-color="#1B262C">
+			<p>This can become quite daunting so let's not forget</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<p><strong>Open Source</strong> is made of people.</p>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<h2>Join a community!</h2>
+			<ul>
+				<li class="fragment" style="font-size: .7em;"><strong>Pisa.dev</strong></li>
+				<li class="fragment" style="font-size: .7em;"><strong>Schroedinger's Hat</strong></li>
+				<li class="fragment" style="font-size: .7em;">#100devs</li>
+				<li class="fragment" style="font-size: .7em;">GDGs in the wild</li>
+				<li class="fragment" style="font-size: .7em;">Local communities</li>
+			</ul>
+		</section>
+
+		<section data-background-color="#1B262C">
+			<p>How to get involved? Just go to the website/blog/Discord whatever</p>
+			<h2>Get <strong>uncomfortable</strong>, the community will make you comfortable</h2>
+		</section>
+
+
+
+		<section data-background-color="#1B262C">
+			<h2>And now,</h2>
+			<img data-src="img/finally.gif" />
+		</section>
+		<section
+			data-background-size="contain" data-background-color="#1B262C">
+			<p style="padding: 1em; color: #d4ecdd">
+				Let's get this Hacktoberfest 2022 party started! 🙌
+				<img data-src="img/party.gif" style="display: block; margin: 0 auto;" />
+			</p>
+		</section>
+		<section data-background-color="#1B262C">
+			<p>
+				<strong>Hacktoberfest</strong> is for everyone.
+				<br>
+				It's a hacking event that bring people together to celebrate Open Source, programming and community spirit.
+			</p>
+		</section>
+		<section data-background-color="#1B262C">
+			<p>
+				Participating in Hacktoberfest is pretty simple. <br><br>
+				Let's follow the instructions on the website of the event.
+			</p>
+		</section>
+
+
+			<section data-background-iframe="https://hacktoberfest.com/participation/"
+				data-background-interactive>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Is expert coding required?
+					<span style="font-size: .8em; color: #9092ff;">
+						<br>Not really. There's so much to work on!
+					</span>
+				</p>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					There are many roles that needs to be filled
+				</p>
+				<ul>
+					<li class="fragment">Writing roles (code, low-code, no-code)</li>
+					<li class="fragment">Design roles (code, low-code, no-code)</li>
+					<li class="fragment">Advocacy roles</li>
+				</ul>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<p>
+					Rules are a little tighter in this edition.
+					<br>
+					<strong>No spammy PRs</strong>
+					<span style="font-size: .8em; color: #9092ff;">
+						<br>Don't do it, they are checking.
+					</span>
+				</p>
+			</section>
+
+
+			<section data-background-color="#1B262C">
+				<p>Nice resources to get started!</p>
+				<p>
+					🔗 <a href="https://404answernotfound.eu/blog/git-for-very-newbie-developers">Git for very newbie developers, by 404answernotfound (which is me)</a></p>
+				<p>
+				<p>
+					🔗 <a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source">Introduction to Open Source</a></p>
+				<p>
+					🔗 <a href="https://rogerdudler.github.io/git-guide/">Git, the simple guide (no deep shit)</a>
+				</p>
+				<p>
+					🔗 <a href="https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source">Intro to Github and OS Projects</a></p>
+			</section>
+
+
+
+			<section data-background-color="#1B262C">
+				<p>Nice projects to take part of:</p>
+				<p>
+					🔗 <a href="https://github.com/pisa-dev/pisa.dev">Pisa.dev website</a></p>
+				<p>
+					🔗 <a
+						href="https://github.com/Schrodinger-Hat/schrodinger-hat-website">Schroedinger's Hat website</a>
+				</p>
+				<p>
+					🔗 <a
+						href="https://github.com/Schrodinger-Hat/youtube-to-anchorfm">Youtube2Anchorfm repo</a>
+				</p>
+				<p>
+					🔗 <a
+						href="https://github.com/tauri-apps/tauri">Tauri</a>
+				</p>
+				<p>
+					🔗 <a href="https://github.com/topics/hacktoberfest">Any Hacktoberfest topic related repos</a>
+				</p>
+			</section>
+
+
+
+			<section data-background-color="#1B262C" data-markdown>
+				<textarea data-template>
+						```js [3-6|10]
+						// final.component.js
+
+						const slides = 'https://404answernotfound.github.io/talks/'
+						const blog = 'https://404answernotfound.eu/'
+						const twitter = '@404answnotfound'
+						const github = '404answernotfound'
+
+
+
+						console.log('Thank you Pisa.dev! 👋')
+						```
+					  </textarea>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h3>Looking for a bunch of cool people in tech?</h3>
+				<p>Join us @ SH and Pisa.dev</p>
+				<img height="150px" src="img/pisadev.svg" />
+				<div class="twocolumns">
+					<img style="border-radius: 50%" height="200px" data-src="img/sh.png" />
+					<img height="200px" data-src="img/qrcodesh.png" />
+				</div>
+			</section>
+
+			<section data-background-color="#1B262C">
+				<h1>Thank you everyone!</h1>
+				<img height="200px" style="border-radius: 50%" src="img/profile.png" />
+				<p>
+					🔗 <a href="https://404answernotfound.eu/">404answernotfound Blog</a></p>
+			</section>
+
+		</div>
+	</div>
+	<footer
+		style="position: absolute; bottom: 2vh; left: 2vw; color: #d4ecdd; font-size: 1em; font-family: Source Sans Pro, Helvetica, sans-serif;">
+		<div style="display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		align-content: center;">
+			<img height="40px" style="border-radius: 50%" src="img/Profile.png" />
+			<span style="padding-left: 1em">@404answernotfound</span>
+		</div>
+	</footer>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		});
+	</script>
+</body>
+
+</html>
