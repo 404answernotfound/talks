@@ -597,7 +597,7 @@ $controlsArrowAngleActive: 36deg;
 	right: 8px;
 	bottom: 8px;
 	z-index: 31;
-	font-family: Helvetica, sans-serif;
+	font-family: JetBrains, sans-serif;
 	font-size: 12px;
 	line-height: 1;
 	color: #fff;
@@ -1389,7 +1389,7 @@ $controlsArrowAngleActive: 36deg;
 .reveal.rtl .slides h5,
 .reveal.rtl .slides h6 {
 	direction: rtl;
-	font-family: sans-serif;
+	font-family: JetBrains, sans-serif;
 }
 
 .reveal.rtl pre,
@@ -1723,7 +1723,7 @@ $notesWidthPercent: 25%;
 	overflow: auto;
 	box-sizing: border-box;
 	text-align: left;
-	font-family: Helvetica, sans-serif;
+	font-family: JetBrains, sans-serif;
 	-webkit-overflow-scrolling: touch;
 
 	.notes-placeholder {
