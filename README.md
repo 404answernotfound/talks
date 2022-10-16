@@ -9,6 +9,6 @@ Slides, articles and videos from talks I did
 
 [Git version control, from Zero to Hero](https://404answernotfound.github.io/talks/git-version-control-zero-to-hero). 
 
-[Git all the things! Hacktoberfest 2018 edition](https://404answernotfound.github.io/talks/slides/git-all-the-things-hacktoberfest-2018/). 
+[Git all the things! Hacktoberfest 2018 edition](https://404answernotfound.github.io/talks/git-all-the-things-hacktoberfest-2018/slides/). 
 
 
